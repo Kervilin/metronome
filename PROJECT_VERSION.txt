@@ -1,0 +1,31 @@
+Métronome - version repère
+
+Build tag: metronome-v1.0-FINAL-NO-CAP-SYNC
+Date repère: 2026-11-09
+
+Cette version contient :
+- Métronome : 1er temps en JAUNE, autres temps en ORANGE
+- Métronome : bouton son / muet
+- Métronome : tap tempo sur le grand rond
+- Métronome : défaut = 2 temps / 100 BPM
+- Métronome : subdivision visuelle du cercle par nombre de temps
+- Analyseur de tempo micro en paysage
+- Analyseur : sélection d'une zone sur le graphe
+- Analyseur : réécoute de la zone sélectionnée
+- Analyseur : export .webm (complet) et .wav (extrait)
+- Analyseur : ouverture directe d'un fichier audio
+- Accordeur chromatique
+- Accordeur : affichage note + cents + fréquence lue + fréquence cible
+- Accordeur : courbe temps réel des fréquences
+- Accordeur : bouton diapason La 440 Hz
+- Accordeur : détecteur d'accords (expérimental)
+- Capacitor Android v7.6.10
+- MainActivity avec FLAG_KEEP_SCREEN_ON
+- Gradle wrapper: 8.13
+
+Vérifications simples :
+- le fichier src/components/Tuner.tsx existe
+- dans l'application, un bouton guitare ouvre l'accordeur
+- dans l'analyseur, un bouton micro ouvre l'analyse du tempo
+
+Si ce fichier est présent avec ce contenu, c'est bien la dernière version préparée ici.

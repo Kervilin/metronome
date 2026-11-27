@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Unbounded", "Space Grotesk", ui-sans-serif, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: #050506;
+  color: #fafafa;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(255, 138, 30, 0.35);
+}
+
+/* --- Zone du cadran : container query pour un rond toujours parfaitement calibré --- */
+.circle-zone {
+  container-type: size;
+}
+
+/* ------------------------------ Animations ------------------------------ */
+/* ─── Animations FLASH Métronome ─── */
+@keyframes beat-flash {
+  0% { transform: scale(1.04); opacity: 1; filter: brightness(1.6); box-shadow: inset 0 2px 26px rgba(0,0,0,0.8), 0 0 100px -10px var(--c); }
+  15% { opacity: 1; transform: scale(1); filter: brightness(1); }
+  40% { opacity: 0; box-shadow: none; }
+  100% { opacity: 0; box-shadow: none; }
+}
+
+@keyframes num-flash {
+  0% { transform: scale(1.15); opacity: 1; filter: brightness(1.5); }
+  20% { transform: scale(1); opacity: 1; filter: brightness(1); }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes ring-flash {
+  0% { transform: scale(1); opacity: 1; border-width: 4px; }
+  50% { transform: scale(1.35); opacity: 0; border-width: 1px; }
+  100% { opacity: 0; }
+}
+
+@keyframes fill-flash {
+  0% { opacity: 1; filter: brightness(2.5); }
+  10% { opacity: 0.3; }
+  25% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes halo-flash {
+  0% { opacity: 0.8; }
+  20% { opacity: 0.2; }
+  35% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes eq-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -32px, 0) scale(1.06);
+  }
+}
+
+@keyframes flame-surge {
+  0%, 100% {
+    transform: translateX(-50%) scaleY(1);
+    filter: blur(0px) brightness(1);
+  }
+  50% {
+    transform: translateX(-50%) scaleY(2.2) translateY(-4px);
+    filter: blur(1px) brightness(1.4);
+  }
+}
+
+/* Flash plein disque très lumineux (visible de loin) */
+@keyframes flash-strong {
+  0% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Pastille « tap tempo » */
+@keyframes chip-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.eq-bar {
+  animation: eq-bar 0.85s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* --------------------------- Curseur de tempo --------------------------- */
+.tempo-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+  cursor: pointer;
+}
+
+.tempo-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 4px solid #101014;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(255, 138, 30, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.tempo-range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.tempo-range::-webkit-slider-thumb:active {
+  transform: scale(0.96);
+}
+
+.tempo-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 4px solid #101014;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(255, 138, 30, 0.45);
+}
+
+.tempo-range::-moz-range-track {
+  background: transparent;
+}
+
+/* ----------------------------- Divers ----------------------------------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
